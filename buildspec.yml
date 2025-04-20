@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  build:
+    commands:
+      - echo "Build complete. Nothing to build for static site."
+  post_build:
+    commands:
+      - echo "Zipping app"
+      - zip -r static-website.zip * .[^.]* || true
+artifacts:
+  files:
+    - static-website.zip
