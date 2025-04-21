@@ -2,11 +2,10 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      docker: 20
     commands:
-      - echo "Checking tools..."
-      - aws --version
-      - docker --version
-      - echo "Tools checked"
+      - echo Installing dependencies...
 
   pre_build:
     commands:
@@ -15,16 +14,14 @@ phases:
 
   build:
     commands:
-     build:
-  commands:
-    - echo Build started on `date`
-    - echo "Listing current directory contents"
-    - ls -la
-    - echo "Checking for Dockerfile..."
-    - cat Dockerfile
-    - echo "Building Docker image..."
-    - docker build -t static-website .
-    - docker tag static-website:latest 080231293217.dkr.ecr.us-east-1.amazonaws.com/static-website:latest
+      - echo Build started on `date`
+      - echo Listing current directory contents...
+      - ls -la
+      - echo Showing Dockerfile...
+      - cat Dockerfile
+      - echo Building Docker image...
+      - docker build -t static-website .
+      - docker tag static-website:latest 080231293217.dkr.ecr.us-east-1.amazonaws.com/static-website:latest
 
   post_build:
     commands:
