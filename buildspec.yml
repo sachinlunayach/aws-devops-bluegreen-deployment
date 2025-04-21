@@ -26,7 +26,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - docker push 080231293217.dkr.ecr.us-east-1.amazonaws.com/static-website:latest
+      - docker push 080231293217.dkr.ecr.us-east-1.amazonaws.com/static-website
 
 artifacts:
   files:
